@@ -34,65 +34,80 @@ function base64encode(input) {
 
 async function loginSpotify() {
 
-  console.log(
-    "REDIRECT_URI =",
-    CONFIG.REDIRECT_URI
-  );
+  try {
 
-  const verifier =
-    generateRandomString(128);
+    console.log("CONFIG:", CONFIG);
 
-  localStorage.setItem(
-    "code_verifier",
-    verifier
-  );
+    const verifier =
+      generateRandomString(128);
 
-  const challenge =
-    base64encode(
-      await sha256(verifier)
+    localStorage.setItem(
+      "code_verifier",
+      verifier
     );
 
-  const params =
-    new URLSearchParams();
+    const challenge =
+      base64encode(
+        await sha256(verifier)
+      );
 
-  params.append(
-    "client_id",
-    CONFIG.CLIENT_ID
-  );
+    const params =
+      new URLSearchParams();
 
-  params.append(
-    "response_type",
-    "code"
-  );
+    params.append(
+      "client_id",
+      CONFIG.CLIENT_ID
+    );
 
-  params.append(
-    "redirect_uri",
-    CONFIG.REDIRECT_URI
-  );
+    params.append(
+      "response_type",
+      "code"
+    );
 
-  params.append(
-    "scope",
-    CONFIG.SCOPES.join(" ")
-  );
+    params.append(
+      "redirect_uri",
+      CONFIG.REDIRECT_URI
+    );
 
-  params.append(
-    "code_challenge_method",
-    "S256"
-  );
+    params.append(
+      "scope",
+      CONFIG.SCOPES.join(" ")
+    );
 
-  params.append(
-    "code_challenge",
-    challenge
-  );
+    params.append(
+      "code_challenge_method",
+      "S256"
+    );
 
-  const authUrl =
-    "https://accounts.spotify.com/authorize?" +
-    params.toString();
+    params.append(
+      "code_challenge",
+      challenge
+    );
 
-  console.log(
-    "AUTH URL =",
-    authUrl
-  );
+    const authUrl =
+      "https://accounts.spotify.com/authorize?" +
+      params.toString();
 
-  window.location = authUrl;
+    console.log("AUTH URL:");
+    console.log(authUrl);
+
+    alert(authUrl);
+
+    // DEBUG MODE
+    // sementara hentikan redirect
+    return;
+
+    // Hapus return di atas nanti
+    // window.location = authUrl;
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert(
+      "ERROR: " + err.message
+    );
+
+  }
+
 }
