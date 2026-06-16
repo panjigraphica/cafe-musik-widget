@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Cafe Musik Widget</title>
-</head>
 <body>
 
-<button id="loginBtn">
+<button onclick="loginSpotify()">
 Login Spotify
 </button>
 
@@ -14,11 +10,7 @@ Login Spotify
 <script src="./auth.js"></script>
 
 <script>
-console.log("CONFIG =", CONFIG);
-
-document
-  .getElementById("loginBtn")
-  .addEventListener("click", loginSpotify);
+console.log("CONFIG:", CONFIG);
 </script>
 
 </body>
