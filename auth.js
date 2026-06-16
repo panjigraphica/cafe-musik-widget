@@ -33,56 +33,67 @@ function base64encode(input) {
 }
 
 async function loginSpotify() {
+  try {
 
-  const verifier =
-    generateRandomString(128);
+    const verifier =
+      generateRandomString(128);
 
-  localStorage.setItem(
-    "code_verifier",
-    verifier
-  );
-
-  const challenge =
-    base64encode(
-      await sha256(verifier)
+    localStorage.setItem(
+      "code_verifier",
+      verifier
     );
 
-  const params =
-    new URLSearchParams();
+    const challenge =
+      base64encode(
+        await sha256(verifier)
+      );
 
-  params.append(
-    "client_id",
-    CONFIG.CLIENT_ID
-  );
+    const params =
+      new URLSearchParams();
 
-  params.append(
-    "response_type",
-    "code"
-  );
+    params.append(
+      "client_id",
+      CONFIG.CLIENT_ID
+    );
 
-  params.append(
-    "redirect_uri",
-    CONFIG.REDIRECT_URI
-  );
+    params.append(
+      "response_type",
+      "code"
+    );
 
-  params.append(
-    "scope",
-    CONFIG.SCOPES.join(" ")
-  );
+    params.append(
+      "redirect_uri",
+      CONFIG.REDIRECT_URI
+    );
 
-  params.append(
-    "code_challenge_method",
-    "S256"
-  );
+    params.append(
+      "scope",
+      CONFIG.SCOPES.join(" ")
+    );
 
-  params.append(
-    "code_challenge",
-    challenge
-  );
+    params.append(
+      "code_challenge_method",
+      "S256"
+    );
 
-  const authUrl =
-    "https://accounts.spotify.com/authorize?" +
-    params.toString();
+    params.append(
+      "code_challenge",
+      challenge
+    );
 
-  window.location = authUrl;
+    const authUrl =
+      "https://accounts.spotify.com/authorize?" +
+      params.toString();
+
+    window.location = authUrl;
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert(
+      "ERROR: " + err.message
+    );
+
+  }
 }
