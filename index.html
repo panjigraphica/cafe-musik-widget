@@ -1,109 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>Cafe Musik Spotify</title>
+</head>
 <body>
-<div style="
-position:absolute;
-top:170px;
-left:20px;
-z-index:9999;
-">
-<button id="loginBtn"
-style="
-padding:10px 20px;
-font-size:16px;
-cursor:pointer;
-">
-Login Spotify
-  <script src="config.js"></script>
-<script src="auth.js"></script>
-<script src="script.js"></script>
 
-<script>
-const btn = document.getElementById("loginBtn");
-
-if(btn){
-  btn.addEventListener("click", () => {
-    loginSpotify();
-  });
-}
-</script>
-</button>
-</div>
-Loading Spotify Login...
-
+<h2>Cafe Musik Widget</h2>
 
 <button id="loginBtn">
 Login Spotify
 </button>
 
-<script>
-
-const code =
-new URLSearchParams(
-window.location.search
-).get("code");
-
-const verifier =
-localStorage.getItem(
-"code_verifier"
-);
-
-fetch(
-"https://accounts.spotify.com/api/token",
-{
-method:"POST",
-
-headers:{
-"Content-Type":
-"application/x-www-form-urlencoded"
-},
-
-body:new URLSearchParams({
-
-client_id:
-"f3ecc07845394bfdaf48974c262d6541",
-
-grant_type:
-"authorization_code",
-
-code,
-
-redirect_uri:
-"https://panjigraphica.github.io/cafe-musik-widget/callback/",
-
-code_verifier:
-verifier
-
-})
-
-})
-
-.then(r=>r.json())
-
-.then(data=>{
-
-localStorage.setItem(
-"spotify_token",
-data.access_token
-);
-
-window.location =
-"https://panjigraphica.github.io/cafe-musik-widget/";
-
-});
-
-</script>
 <script src="config.js"></script>
 <script src="auth.js"></script>
-<script src="script.js"></script>
 
 <script>
 document
-.getElementById("loginBtn")
-.addEventListener(
-"click",
-loginSpotify
-);
+  .getElementById("loginBtn")
+  .addEventListener("click", loginSpotify);
 </script>
 
 </body>
