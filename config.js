@@ -1,5 +1,5 @@
 const CONFIG = {
-  CLIENT_ID: "f3ecc07845394bfdaf48974c262d6541",
+  CLIENT_ID: "e4f09ace85354ef196201a7fccda6798",
 
   REDIRECT_URI:
 "https://panjigraphica.github.io/cafe-musik-widget/callback.html",
