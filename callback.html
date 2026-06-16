@@ -4,11 +4,6 @@
 
 Loading Spotify Login...
 
-
-<button id="loginBtn">
-Login Spotify
-</button>
-
 <script>
 
 const code =
@@ -42,7 +37,7 @@ grant_type:
 code,
 
 redirect_uri:
-"https://panjigraphica.github.io/cafe-musik-widget/callback/",
+"https://panjigraphica.github.io/cafe-musik-widget/callback.html",
 
 code_verifier:
 verifier
@@ -65,18 +60,6 @@ window.location =
 
 });
 
-</script>
-<script src="config.js"></script>
-<script src="auth.js"></script>
-<script src="script.js"></script>
-
-<script>
-document
-.getElementById("loginBtn")
-.addEventListener(
-"click",
-loginSpotify
-);
 </script>
 
 </body>
