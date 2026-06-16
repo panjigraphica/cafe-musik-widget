@@ -34,6 +34,11 @@ function base64encode(input) {
 
 async function loginSpotify() {
 
+  console.log(
+    "REDIRECT_URI =",
+    CONFIG.REDIRECT_URI
+  );
+
   const verifier =
     generateRandomString(128);
 
@@ -80,7 +85,14 @@ async function loginSpotify() {
     challenge
   );
 
-  window.location =
+  const authUrl =
     "https://accounts.spotify.com/authorize?" +
     params.toString();
+
+  console.log(
+    "AUTH URL =",
+    authUrl
+  );
+
+  window.location = authUrl;
 }
