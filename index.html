@@ -14,6 +14,19 @@ font-size:16px;
 cursor:pointer;
 ">
 Login Spotify
+  <script src="config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+
+<script>
+const btn = document.getElementById("loginBtn");
+
+if(btn){
+  btn.addEventListener("click", () => {
+    loginSpotify();
+  });
+}
+</script>
 </button>
 </div>
 Loading Spotify Login...
