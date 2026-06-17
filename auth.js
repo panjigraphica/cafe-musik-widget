@@ -1,7 +1,6 @@
-const authUrl =
-  "https://accounts.spotify.com/authorize?" +
-  params.toString();
+async function loginSpotify() {
+  alert("TEST");
 
-console.log(authUrl);
-
-window.open(authUrl, "_self");
+  window.location.href =
+    "https://www.google.com";
+}
