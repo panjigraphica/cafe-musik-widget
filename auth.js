@@ -11,4 +11,5 @@ async function loginSpotify() {
     "&scope=user-read-currently-playing%20user-read-playback-state";
 
   window.location.href = spotifyUrl;
+
 }
