@@ -7,6 +7,6 @@ async function loginSpotify() {
     "&redirect_uri=https%3A%2F%2Fpanjigraphica.github.io%2Fcafe-musik-widget%2Fcallback.html" +
     "&scope=user-read-currently-playing%20user-read-playback-state";
 
-  alert(spotifyUrl);
+  location.href = spotifyUrl;
 
 }
